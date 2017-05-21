@@ -16,17 +16,19 @@ for iter = 1:num_iters
     % Hint: While debugging, it can be useful to print out the values
     %       of the cost function (computeCost) and gradient here.
     %
-    cur_theta = theta;
-    h = X * theta;
-    cur_sum_theta0 = 0;
-    cur_sum_theta1 = 0;
-    for i = 1:m 
-        cur_sum_theta0 = cur_sum_theta0 + (h(i)-y(i))*X(i,1);
-        cur_sum_theta1 = cur_sum_theta1 + (h(i)-y(i))*X(i,2);
+    cur_theta = theta
+    h = X * cur_theta
+    cur_sum = 0
+    for j = 1:m 
+        cur_sum = cur_sum + (h(j)-y(j))*x(i,j);
     end
-    cur_theta(1) = cur_theta(1) - alpha/m*cur_sum_theta0;
-    cur_theta(2) = cur_theta(2) - alpha/m*cur_sum_theta1;
-    theta = cur_theta;
+    theta(0) = cur_theta(0) - alpha/m*cur_sum;
+
+
+
+
+
+
 
     % ============================================================
 

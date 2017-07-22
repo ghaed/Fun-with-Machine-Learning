@@ -47,7 +47,7 @@ hold off;
 
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
-
+% Submission token: 9VL0Cq7TaQEWVcxp
 
 %% ============ Part 2: Compute Cost and Gradient ============
 %  In this part of the exercise, you will implement the cost and gradient

@@ -24,8 +24,7 @@ sig = sigmoid(X*theta);
 J_v = -y.*log(sig) - (1-y).*log(1-sig);
 J = 1/m*sum(J_v);
 
-grad_m = X.*(sig-y);
-grad = 1/m*sum(grad_m, 1)';
+grad_v = (sig-y).*
 % =============================================================
 
 end

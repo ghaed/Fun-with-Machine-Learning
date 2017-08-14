@@ -21,11 +21,8 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 X = [ones(m, 1) X];
-Y1 = sigmoid(X*Theta1');
-Y1 = [ones(m, 1) Y1];
-Y2 = sigmoid(Y1*Theta2');
-
-[val, p]= max(Y2, [], 2);
+Y1_all_prediction = sigmoid(X*Theta1');
+[val, p]= max(Y_all_prediction, [], 2);
 
 
 

@@ -67,16 +67,23 @@ J = 0;
 for i=1:m
     z2 = Theta1 * X(i,:)';
     a2 = sigmoid(z2);
-    z3 = Theta2 * [1; a2];
-    a3 = sigmoid(z3);
-    y_vec = zeros(num_labels, 1);
-    y_vec(y(i)) = 1;
-    J_vec = -y_vec.*log(a3) - (1-y_vec).*log(1-a3);
-    J = J + sum(J_vec);
+    z3 = Theta2 * [1; a2]';
+    J = J + 
 end
-J = J/m;
 
-J = J + lambda/(2*m)*(sum(sum(Theta1(:,2:end).^2)) + sum(sum(Theta2(:,2:end).^2)));
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 % -------------------------------------------------------------

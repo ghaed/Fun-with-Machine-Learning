@@ -78,6 +78,39 @@ J = J/m;
 
 J = J + lambda/(2*m)*(sum(sum(Theta1(:,2:end).^2)) + sum(sum(Theta2(:,2:end).^2)));
 
+% Back-propagation
+Delta1 = zeros(size(Theta1));
+Delta2 = zeros(size(Theta2));
+for i = 1:m
+    % Step 1: perform a feed-forward pass
+    a1 = X(i,:)';
+    z2 = Theta1 * a1;
+    z2 = [1e12; z2];
+    a2 = sigmoid(z2);
+    z3 = Theta2 * a2;
+    a3 = sigmoid(z3);
+    y_vec = (1:num_labels == y(i))';
+    
+    % Step 2: Compute output layer deltas
+    del3 = a3 - y_vec;
+    
+    % Step 3: Compute hidden layer and input layer deltas
+    del2 = Theta2' * del3 .* sigmoidGradient(z2);
+    del2 = del2(2:end);
+    
+    % Step 4: Accumulate gradient from this example
+    Delta2 = Delta2 + del3 * a2';
+    Delta1 = Delta1 + del2 * a1';
+end
+
+% Step 5 compute gradient from deltas
+Theta2_grad = Delta2 / m;
+Theta1_grad = Delta1 / m;
+
+% Regularization
+Theta1_grad(:,2:end) = Theta1_grad(:,2:end) + lambda/m*Theta1(:,2:end);
+Theta2_grad(:,2:end) = Theta2_grad(:,2:end) + lambda/m*Theta2(:,2:end);
+
 
 % -------------------------------------------------------------
 

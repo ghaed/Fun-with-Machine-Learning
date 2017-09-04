@@ -27,10 +27,10 @@ centroids = zeros(K, n);
 %
 
 
-
-
-
-
+for k = 1:K
+    X_subset = X(idx==k,:);
+    centroids(k, :) = mean(X_subset,1);
+end
 
 
 % =============================================================

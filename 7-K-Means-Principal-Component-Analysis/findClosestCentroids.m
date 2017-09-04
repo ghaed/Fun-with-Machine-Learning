@@ -20,8 +20,19 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
+m = size(X,1);
+n = size(X,2);
 
-
+for i = 1:m
+    dis_min = 1e9;
+    for k = 1:K
+        dis_cur = norm(X(i, :) - centroids(k,:));
+        if dis_cur < dis_min
+            idx(i) = k;
+            dis_min = dis_cur;
+        end
+    end
+end
 
 
 
